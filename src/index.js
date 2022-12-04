@@ -16,7 +16,7 @@ const countriesService = new CountriesService();
 // Вешаем слушателя на input
 refs.searchInput.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
-// Функция для получения текста введенного пользователем в input
+// Функция для получения текста введенного пользователем 
 function onSearch(event) {
     event.preventDefault();
     if (event.target.value.trim() === '') {
@@ -27,7 +27,7 @@ function onSearch(event) {
     countriesService.fetchCountries().then(data => renderMarkup(data)).catch(handleError);
 }
 
-// Функция для сообщения пользователю об ошибке
+// Функция для сообщения об ошибке
 const handleError=()=>{
     Notify.failure('Oops, there is no country with that name')
 }
@@ -41,7 +41,7 @@ function markupOneCountry(data) {
     }).join('');
 }
 
-// Функция создающая разметку для  2-10 стран
+// Функция создающая разметку для списка стран
 function markupMoreCountries(data) {
     return data.map(country => {
         return `<li class="country-list-item"><img src="${country.flags.svg}" alt="Flag" width="20" height="16"></img>${country.name.official}</li>`
