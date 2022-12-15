@@ -25,11 +25,14 @@ function onSearch(event) {
     };
     countriesService.searchInput = event.target.value.trim();
     countriesService.fetchCountries().then(data => renderMarkup(data)).catch(handleError);
+    
 }
 
 // Функция для сообщения об ошибке
-const handleError=()=>{
+const handleError = () => {
+    clearPage();
     Notify.failure('Oops, there is no country with that name')
+    
 }
 
 // Функция создающая разметку для  одной страны
